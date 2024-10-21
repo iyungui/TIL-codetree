@@ -7,6 +7,6 @@ int main() {
     cout << fixed;
     cout.precision(1);
     cout << ft << "ft = " << ft * 30.48 << "cm" << endl;
-    cout << mi << "mi = " << mi * 160934 << "cm" << endl;
+    cout << mi << "mi = " << mi * 160934 << "cm";
     return 0;
 }
