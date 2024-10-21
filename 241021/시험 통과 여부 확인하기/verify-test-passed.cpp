@@ -10,7 +10,7 @@ int main() {
     } else {
         int score;
         score = 80 - n;
-        cout << n << " more score";
+        cout << score << " more score";
     }
     return 0;
 }
