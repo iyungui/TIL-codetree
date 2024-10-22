@@ -12,7 +12,7 @@ int main() {
     } else if (c == 'B') {
         cout << "Good";
     } else if (c == 'C') {
-        cout << "Usually"
+        cout << "Usually";
     } else if (c == 'D') {
         cout << "Effort";
     } else {
