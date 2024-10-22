@@ -9,34 +9,7 @@ int main() {
 
     cin >> a >> b >> c >> d >> e;
 
-
-    if (a > b) {
-        cout << 1;
-    } else {
-        cout << 0;
-    }
-    cout << endl;
-    
-    if (a > c) {
-        cout << 1;
-    } else {
-        cout << 0;
-    }
-    cout << endl;
-    
-    if (a > d) {
-        cout << 1;
-    } else {
-        cout << 0;
-    }
-    cout << endl;
-
-    if (a > e) {
-        cout << 1;
-    } else {
-        cout << 0;
-    }
-    cout << endl;
+    cout << (a > b) << "\n" << (a > c) << "\n" << (a > d) << "\n" << (a > e) << "\n";
     
     return 0;
 }
