@@ -10,6 +10,7 @@ int main() {
     } else {
         cout << "odd";
     }
+    cout << endl;
     if (b % 2 == 0) {
         cout << "even";
     } else {
