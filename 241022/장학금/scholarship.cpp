@@ -11,6 +11,8 @@ int main() {
             cout << 100000;
         } else if (final_exam >= 90) {
             cout << 50000;
+        } else {
+            cout << 0;
         }
     } else {
         cout << 0;
