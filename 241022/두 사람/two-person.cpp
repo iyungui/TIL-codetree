@@ -13,12 +13,12 @@ int main() {
     //     cout << 1;
     // }
 
-    if (a_age >= 19 || b_age >= 19) {
-        if (a_gender == 'M' || b_gender == 'M') {
-            cout << 1;
-        }
-    }
+    // if (a_age >= 19 || b_age >= 19) {
+    //     if (a_gender == 'M' || b_gender == 'M') {
+    //         cout << 1;
+    //     }
+    // }
 
-    // cout << ((a_gender == 'M') && (a_age >= 19)) || ((b_gender == 'M') && (b_age >= 19));
+    cout << (((a_gender == 'M') && (a_age >= 19)) || ((b_gender == 'M') && (b_age >= 19)));
     return 0;
 }
