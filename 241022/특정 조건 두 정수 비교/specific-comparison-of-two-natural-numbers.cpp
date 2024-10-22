@@ -7,13 +7,13 @@ int main() {
     cin >> a >> b;
     if (a < b) {
         cout << 1;
-    } else if (a > b) {
+    } else {
         cout << 0;
     }
     cout << " ";
     if (a == b) {
         cout << 1;
-    } else if (a != b) {
+    } else {
         cout << 0;
     }
     return 0;
