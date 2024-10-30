@@ -2,19 +2,19 @@
 using namespace std;
 
 int main() {
-    // 여기에 코드를 작성해주세요.
     int n;
     cin >> n;
-    int cnt_even = 1;
-    int cnt_odd = n;
+    int cnt_even = 1;  // 초기 별 개수 (홀수 번째 줄에서 사용할 값)
+    int cnt_odd = n;   // 초기 별 개수 (짝수 번째 줄에서 사용할 값)
 
+    // 위쪽 부분: 첫 번째 패턴
     for (int i = 0; i < n; i++) {
-        if (i % 2 == 0) {
+        if (i % 2 == 0) {  // 짝수 번째 줄
             for (int j = 0; j < cnt_even; j++) {
                 cout << "* ";
             }
             cnt_even++;
-        } else {
+        } else {  // 홀수 번째 줄
             for (int j = 0; j < cnt_odd; j++) {
                 cout << "* ";
             }
@@ -22,17 +22,18 @@ int main() {
         }
         cout << endl;
     }
-    
-    cnt_even--;
-    cnt_odd++;
+
+    // 아래쪽 부분: 두 번째 패턴
+    cnt_even--;  // 위의 반복문 마지막 줄에서 cnt_even이 1 증가했으므로, 다시 줄여줌
+    cnt_odd++;   // 위의 반복문 마지막 줄에서 cnt_odd가 1 감소했으므로, 다시 늘려줌
 
     for (int i = 0; i < n; i++) {
-        if (i % 2 == 0) {
+        if (i % 2 == 0) {  // 짝수 번째 줄
             for (int j = 0; j < cnt_even; j++) {
                 cout << "* ";
             }
             cnt_even--;
-        } else {
+        } else {  // 홀수 번째 줄
             for (int j = 0; j < cnt_odd; j++) {
                 cout << "* ";
             }
@@ -40,5 +41,6 @@ int main() {
         }
         cout << endl;
     }
+
     return 0;
 }
