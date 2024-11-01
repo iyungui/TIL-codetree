@@ -10,11 +10,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (i % 2 == 0)
-                cout << ++cnt << " ";
-            else {
+                cnt++;
+            else
                 cnt += 2;
-                cout << cnt << " ";
-            }
+            cout << cnt << " ";
+            
         }
         cout << endl;
     }
