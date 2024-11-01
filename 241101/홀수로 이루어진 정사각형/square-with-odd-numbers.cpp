@@ -12,7 +12,9 @@ int main() {
             cout << sum << " ";
             sum += 2;
         }
-        sum -= 8;
+        for (int j = 0; j < n - 1; j++) {
+            sum -= 2;
+        }
         cout << endl;
     }
     return 0;
