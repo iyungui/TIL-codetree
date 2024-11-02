@@ -8,7 +8,7 @@ int main() {
     int x = 65;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            cout << (char)(x + j);
+            cout << (char)(x + (n * i) + j);
         }
         cout << endl;
     }
