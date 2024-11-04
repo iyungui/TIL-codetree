@@ -10,7 +10,7 @@ int main() {
         cin >> arr[i];
     }
     for(int i = n; i >= 0; i--) {
-        if(arr[i] % 2 == 0) {
+        if(arr[i] % 2 == 0 && arr[i] != 0) {
             cout << arr[i] << " ";
         }
     }
