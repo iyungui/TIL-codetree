@@ -29,15 +29,15 @@ int main() {
     }
 
     if (max == 0) {
-        if (a.length() == b.length()) max = a.length;
-        else if (a.length() == c.length()) max == a.length;
-        else max = b.length;
+        if (a.length() == b.length()) max = a.length();
+        else if (a.length() == c.length()) max = a.length();
+        else max = b.length();
     }
 
     if (min == 0) {
-        if (a.length() == b.length()) min = a.length;
-        else if (a.length() == c.length()) min == a.length;
-        else min = b.length;
+        if (a.length() == b.length()) min = a.length();
+        else if (a.length() == c.length()) min = a.length();
+        else min = b.length();
     }
 
     cout << max - min;
