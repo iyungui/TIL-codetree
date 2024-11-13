@@ -14,6 +14,8 @@ int main() {
         max = b.length();
     } else if (c.length() > a.length() && c.length() > b.length()) {
         max = c.length();
+    } else {
+        max = 0;
     }
 
     if (a.length() < b.length() && a.length() < c.length()) {
@@ -22,6 +24,20 @@ int main() {
         min = b.length();
     } else if (c.length() < a.length() && c.length() < b.length()) {
         min = c.length();
+    } else {
+        min = 0;
+    }
+
+    if (max == 0) {
+        if (a.length() == b.length()) max = a.length;
+        else if (a.length() == c.length()) max == a.length;
+        else max = b.length;
+    }
+
+    if (min == 0) {
+        if (a.length() == b.length()) min = a.length;
+        else if (a.length() == c.length()) min == a.length;
+        else min = b.length;
     }
 
     cout << max - min;
