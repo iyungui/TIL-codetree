@@ -16,12 +16,9 @@ int main() {
     int cnt = 0;
     int str_length = 0;
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < arr[i].length(); j++) {
-            if (str == arr[i][j]) {
-                cnt++;
-                str_length += arr[i].length();
-                break;
-            }
+        if (str == arr[i][0]) {
+            cnt++;
+            str_length += arr[i].length();
         }
     }
     cout << fixed;
