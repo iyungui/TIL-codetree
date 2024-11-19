@@ -10,8 +10,11 @@ int main() {
     // cout << str.substr(0, 1) + str.substr(2, str.length() - 4) + str.substr(str.length() - 1);
     
     // solution: erase
+    int len = str.length();
     str.erase(1, 1);
-    str.erase(str.length() - 2, 1);
+    len--;
+    str.erase(len - 2, 1);
+    len--;
     cout << str;
     return 0;
 }
