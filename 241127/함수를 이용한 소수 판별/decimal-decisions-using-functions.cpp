@@ -2,6 +2,7 @@
 using namespace std;
 
 bool IsPrime(int n) {
+    if (n == 1) return false;
     for(int i = 2; i < n; i++) {
         if(n % i == 0) return false;
     }
@@ -14,9 +15,9 @@ int main() {
     cin >> a >> b;
     int sum = 0;
     for(int i = a; i <= b; i++) {
-        if(i == 1) continue;
         if(IsPrime(i)) sum += i;
     }
+
     cout << sum;
     return 0;
 }
