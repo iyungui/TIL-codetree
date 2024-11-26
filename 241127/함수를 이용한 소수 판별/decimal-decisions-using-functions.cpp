@@ -7,12 +7,13 @@ bool IsPrime(int n) {
     }
     return true;
 }
+
 int main() {
     // 여기에 코드를 작성해주세요.
     int a, b;
     cin >> a >> b;
     int sum = 0;
-    for(int i = a; i <= b; i++) {
+    for(int i = a + 1; i <= b; i++) {
         if(IsPrime(i)) sum += i;
     }
     cout << sum;
