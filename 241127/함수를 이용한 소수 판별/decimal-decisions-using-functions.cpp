@@ -13,7 +13,8 @@ int main() {
     int a, b;
     cin >> a >> b;
     int sum = 0;
-    for(int i = a + 1; i <= b; i++) {
+    for(int i = a; i <= b; i++) {
+        if(i == 1) continue;
         if(IsPrime(i)) sum += i;
     }
     cout << sum;
