@@ -7,8 +7,14 @@ bool ConsecutiveNumSubSequence(int *a, int *b, int n1, int n2) {
         for(int j = cnt_b; j < n2; j++) {
             if(a[i] == b[j]) {
                 cnt_b++;
-                cnt_a = i + 1;
+                cnt_a = i;
+                // cout << " O i: " << i << " j: " << j << endl;
                 if(cnt_b == n2) return true;
+                break;
+            } else {
+                cnt_b = 0;
+                // cout << " X i: " << i << " j: " << j << endl;
+                break;
             }
             if(cnt_a == n1) return false;
         }
