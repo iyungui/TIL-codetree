@@ -5,17 +5,9 @@ using namespace std;
 string a;
 
 bool Palindrome(string &a) {
-    int a_reverse[a.length()];
-    int idx = 0;
-    for(int i = a.length() - 1; i >= 0; i--) {
-        a_reverse[idx] = a[i];
-        idx++;
-    }
-    bool satisfied = true;
-    for(int i = 0; i < a.length(); i++) {
-        if(a_reverse[i] != a[i]) satisfied = false;
-    }
-    return satisfied;
+    for(int i = 0; i < (int) a.size(); i++)
+        if(a[i] != a[(int) a.size() - i - 1]) return false;
+    return true;
 }
 
 int main() {
