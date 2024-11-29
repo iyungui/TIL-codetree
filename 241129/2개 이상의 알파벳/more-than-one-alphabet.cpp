@@ -6,9 +6,12 @@ string a;
 
 bool IsDifferent(string &a) {
     string b;
-    int len = b.length();
+    int len = 0;
     for(int i = 0; i < a.length(); i++) {
-        if(b[len] != a[i]) b += a[i];
+        if(b[len] != a[i]) {
+            b += a[i];
+            len++;
+        }
         if(len >= 2) return true;
     }
     return false;
