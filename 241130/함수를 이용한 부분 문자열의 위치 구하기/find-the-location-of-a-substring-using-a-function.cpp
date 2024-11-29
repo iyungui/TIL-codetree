@@ -9,15 +9,17 @@ int IsSubStr() {
     int a_idx = 0, b_idx = 0;
     for(int i = a_idx; i < a.length(); i++) {
         for(int j = b_idx; j < b.length(); j++) {
+            cout << " a[i]: " << a[i] << " b[j]: " << b[j] << endl;
             if(a[i] == b[j]) {
                 
                 b_idx++;
                 if(b_idx == b.length()) {
-                    return i - b_idx + 1;  
+                    return i - (b_idx - 1);  
                 }
                 break;
             } else {
                 b_idx = 0;
+                i--;
                 break;
             }
         }
