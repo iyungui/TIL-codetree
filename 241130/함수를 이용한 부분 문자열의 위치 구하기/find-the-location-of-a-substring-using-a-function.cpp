@@ -9,7 +9,7 @@ int IsSubStr() {
     int a_idx = 0, b_idx = 0;
     for(int i = a_idx; i < a.length(); i++) {
         for(int j = b_idx; j < b.length(); j++) {
-            cout << " a[i]: " << a[i] << " b[j]: " << b[j] << endl;
+            // cout << " a[i]: " << a[i] << " b[j]: " << b[j] << endl;
             if(a[i] == b[j]) {
                 
                 b_idx++;
