@@ -5,14 +5,9 @@ using namespace std;
 string a;
 
 bool IsDifferent(string &a) {
-    string b;
-    int len = 0;
-    for(int i = 0; i < a.length(); i++) {
-        if(b[len] != a[i]) {
-            b += a[i];
-            len++;
-        }
-        if(len >= 2) return true;
+    char first = a[0];
+    for(int i = 1; i < a.length(); i++) {
+        if(a[i] != first) return true;
     }
     return false;
 }
