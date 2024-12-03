@@ -22,12 +22,35 @@ using namespace std;
 //     return 0;
 // }
 
+// ANSWER 1
+// int main() {
+//     string a, b;
+//     cin >> a >> b;
+//     sort(a.begin(), a.end());
+//     sort(b.begin(), b.end());
+//     if(a.compare(b) == 0) cout << "Yes";
+//     else cout << "No";
+//     return 0;
+// }
+
+// ANSWER 2
+#define ASCII_NUM 128
+
 int main() {
     string a, b;
+    int count[ASCII_NUM];
     cin >> a >> b;
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    if(a.compare(b) == 0) cout << "Yes";
-    else cout << "No";
+    for(int i = 0; i < ASCII_NUM; i++)
+        count[i] = 0;
+    for(int i = 0; i < a.size(); i++)
+        count[a[i]]++;
+    for(int i = 0; i < b.size(); i++)
+        count[b[i]]--;
+    for(int i = 0; i < ASCII_NUM; i++)
+        if(count[i] != 0) {
+            cout << "No";
+            return 0;
+        }
+    cout << "Yes";
     return 0;
 }
