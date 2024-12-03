@@ -22,15 +22,11 @@ int main() {
         agents[i] = Agent(codeName, score);
     }
     int idx = 0;
-    int min_score = agents[0].score;
     for(int i = 0; i < 5; i++) {
-        if(min_score > agents[i].score) {
-            min_score = agents[i].score;
+        if(agents[idx].score > agents[i].score) {
             idx = i;
-            // cout << idx << endl;
         }
     }
-    // cout << idx;
     cout << agents[idx].codeName << " " << agents[idx].score;
     return 0;
 }
