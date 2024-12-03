@@ -10,6 +10,9 @@ int main() {
     for(int i = 0; i < 2 * n; i++)
         cin >> arr[i];
     sort(arr, arr + 2 * n);
-    cout << arr[n / 2] + arr[n / 2 + 1];
+    int result = 0;
+    for(int i = 0; i < n; i++)
+        result = max(result, arr[i] + arr[2 * n - 1 - i]);
+    cout << result;
     return 0;
 }
