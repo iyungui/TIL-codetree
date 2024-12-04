@@ -18,7 +18,16 @@ class Student {
 };
 
 bool cmp(Student a, Student b) {
-    return make_tuple(a.kor, a.eng, a.math) > make_tuple(b.kor, b.eng, b.math);
+    // return make_tuple(a.kor, a.eng, a.math) > make_tuple(b.kor, b.eng, b.math);
+    bool isPrior = false;
+    isPrior = a.kor > b.kor;
+    if(a.kor == b.kor) {
+        isPrior = a.eng > b.eng;
+        if(a.eng == b.eng) {
+            isPrior = a.math > b.math;
+        }
+    }
+    return isPrior;
 }
 
 int main() {
