@@ -13,6 +13,8 @@ class Weather {
         Weather() {};
 };
 
+
+/* my answer
 int main() {
     // 여기에 코드를 작성해주세요.
     int n;
@@ -44,4 +46,26 @@ int main() {
     }
     cout << rainWeatherList[min_idx].date << " " << rainWeatherList[min_idx].day << " " << rainWeatherList[min_idx].info;
     return 0;
+}
+*/
+
+//
+
+Weather ans = Weather("9999-99-99", "", "");
+
+int main() {
+    int n;
+    cin >> n;
+
+    for(int i = 0; i < n; i++) {
+        string date, day, info;
+        cin >> date >> day >> info;
+        Weather w = Weather(date, day, info);
+        if(info == "Rain") {
+            if(ans.date >= w.date)
+                ans = w;
+        }
+    }
+
+    cout << ans.date << " " << ans.day << " " << ans.info;
 }
