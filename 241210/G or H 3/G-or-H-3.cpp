@@ -1,7 +1,7 @@
 #include <iostream>
 #include <climits>
 using namespace std;
-#define MAX_N 100
+#define MAX_N 10000
 
 int main() {
     // 여기에 코드를 작성해주세요.
