@@ -12,9 +12,12 @@ int main() {
 
     for(int i = 0; i < n; i++) {
         if(a[i] == 'C') {
-            for(int j = i; j < n - i; j++) {
+            for(int j = i + 1; j < n; j++) {
                 if(a[j] == 'O') {
-                    for(int k = j; k < n - j; k++) cnt++;
+                    for(int k = j + 1; k < n; k++) {
+                        if(a[k] == 'W')
+                            cnt++;
+                    }
                 }
             }
         }
