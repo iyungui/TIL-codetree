@@ -76,8 +76,8 @@ int main() {
     for(int i = 0; i < n; i++) cin >> arr[i];
     int ans = -1;
     for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-            for(int k = 0; k < n; k++) {
+        for(int j = i + 1; j < n; j++) {
+            for(int k = j + 1; k < n; k++) {
                 if(IsCarry(i, j, k) == false)
                     ans = max(ans, arr[i] + arr[j] + arr[k]);
             }
