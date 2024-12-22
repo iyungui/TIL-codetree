@@ -13,12 +13,16 @@ int main() {
 
     for(int i = 1; i <= m; i++) cin >> cnt_arr[i];
 
+    int ans = 0;
+
     for(int i = 1; i <= m; i++) {
         students[cnt_arr[i]]++;
         if(students[cnt_arr[i]] == k) {
-            cout << cnt_arr[i];
+            ans = cnt_arr[i];
             break;
         }
     }
+    if(ans) cout << ans;
+    else cout << -1;
     return 0;
 }
