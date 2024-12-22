@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_T 10000
+#define MAX_T 1000000
 
 int n, m;
 int a[MAX_T + 1], b[MAX_T + 1];
