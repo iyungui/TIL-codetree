@@ -12,7 +12,7 @@ int main() {
     cin >> n >> t;
     for(int i = 1; i <= n; i++) cin >> arr[i];
 
-    int cnt;
+    int cnt = 0;
     int max_cnt = INT_MIN;
 
     for(int i = 1; i <= n; i++) {
