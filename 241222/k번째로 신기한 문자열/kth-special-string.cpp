@@ -8,27 +8,18 @@ using namespace std;
 int n, k;
 string t;
 string arr[MAX_N];
+string t_arr[MAX_N];
 
 int main() {
     cin >> n >> k >> t;
     for(int i = 0; i < n; i++) cin >> arr[i];
 
     sort(arr, arr + n);
-    // for(int i = 0; i < n; i++) cout << arr[i] << endl;
-
     int cnt = 0;
     for(int i = 0; i < n; i++) {
-        bool satisfied = true;
-        for(int j = 0; j < t.length(); j++) {
-            if(arr[i][j] != t[j]) {
-                satisfied = false;
-                break;
-            }
-        }
-        if(satisfied) {
-            cnt++;
-        }
-        if(satisfied && cnt == 3) cout << arr[i];
+        if (arr[i].substr(0, t.length()) == t)
+            t_arr[i] = arr[i];
     }
+    cout << t_arr[k];
     return 0;
 }
