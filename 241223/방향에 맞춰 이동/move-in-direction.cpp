@@ -14,19 +14,15 @@ int main() {
         int distance;
         cin >> direction >> distance;
 
-        if(direction == 'W') {
-            x += dx[0] * distance;
-            y += dy[0] * distance;
-        } else if(direction == 'S') {
-            x += dx[1] * distance;
-            y += dy[1] * distance;
-        } else if(direction == 'N') {
-            x += dx[2] * distance;
-            y += dy[2] * distance;
-        } else if(direction == 'E') {
-            x += dx[3] * distance;
-            y += dy[3] * distance;
-        }
+        // 각 방향에 맞는 번호를 붙여주기
+        int dir;
+        if(direction == 'W') dir = 0;
+        else if(direction == 'S') dir = 1;
+        else if(direction == 'N') dir = 2;
+        else if(direction == 'E') dir = 3;
+        
+        x += dx[dir] * distance;
+        y += dy[dir] * distance;
     }
 
     cout << x << " " << y;
