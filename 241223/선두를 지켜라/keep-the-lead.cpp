@@ -30,10 +30,21 @@ int main() {
         total_t += t;
     }
     int cnt = 0;
-    bool prev_head = a_pos[1] > b_pos[1];    // 만약 true 이면 -> false 가 나오면 cnt 증가. 그 이후 다시 true 가 나오면 cnt 증가.. 반복
-    
+    bool prev_head;
+    int idx = 0;
+    for(int i = 1; i <= total_t; i++) {
+        if(a_pos[i] > b_pos[i]) {
+            prev_head = true;
+            idx = i;
+            break;
+        } else if(a_pos[i] < b_pos[i]) {
+            prev_head = false;
+            idx = i;
+            break;
+        } else continue;
+    }
     // 즉, 이전 head 와 다르면. cnt 증가
-    for(int i = 2; i <= total_t; i++) {
+    for(int i = idx; i <= total_t; i++) {
         // cout << "time: " << i << " " << a_pos[i] << ", " << b_pos[i] << endl;
         bool head = a_pos[i] > b_pos[i];
 
