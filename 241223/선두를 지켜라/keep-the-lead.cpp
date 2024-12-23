@@ -30,27 +30,39 @@ int main() {
         total_t += t;
     }
     int cnt = 0;
-    bool prev_head;
-    int idx = 0;
+    // bool prev_head;
+    // int idx = 0;
+    // for(int i = 1; i <= total_t; i++) {
+    //     if(a_pos[i] > b_pos[i]) {
+    //         prev_head = true;
+    //         idx = i;
+    //         break;
+    //     } else if(a_pos[i] < b_pos[i]) {
+    //         prev_head = false;
+    //         idx = i;
+    //         break;
+    //     } else continue;
+    // }
+    // // 즉, 이전 head 와 다르면. cnt 증가
+    // for(int i = idx; i <= total_t; i++) {
+    //     // cout << "time: " << i << " " << a_pos[i] << ", " << b_pos[i] << endl;
+    //     bool head = a_pos[i] > b_pos[i];
+
+    //     if(prev_head != head) {
+    //         cnt++;
+    //         prev_head = head;
+    //     }
+    // }
+
+    // A가 리더면 1, B가 리더면 2로 관리
+    int leader = 0;
     for(int i = 1; i <= total_t; i++) {
         if(a_pos[i] > b_pos[i]) {
-            prev_head = true;
-            idx = i;
-            break;
+            if(leader == 2) cnt++;
+            leader = 1;
         } else if(a_pos[i] < b_pos[i]) {
-            prev_head = false;
-            idx = i;
-            break;
-        } else continue;
-    }
-    // 즉, 이전 head 와 다르면. cnt 증가
-    for(int i = idx; i <= total_t; i++) {
-        // cout << "time: " << i << " " << a_pos[i] << ", " << b_pos[i] << endl;
-        bool head = a_pos[i] > b_pos[i];
-
-        if(prev_head != head) {
-            cnt++;
-            prev_head = head;
+            if(leader == 1) cnt++;
+            leader = 2;
         }
     }
     cout << cnt;
