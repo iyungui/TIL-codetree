@@ -13,7 +13,7 @@ int GetDir(char d) {
 }
 
 bool InRange(int nx, int ny) {
-    return nx > 0 && ny <= n && ny > 0 && ny <= n;
+    return nx > 0 && nx <= n && ny > 0 && ny <= n;
 }
 
 int main() {
@@ -30,6 +30,7 @@ int main() {
     while(t > 0) {
         nx = r + dx[curr_dir];
         ny = c + dy[curr_dir];
+
         if(!InRange(nx, ny)) {
             t--;
             curr_dir = 3 - curr_dir;
@@ -39,6 +40,7 @@ int main() {
         r = nx, c = ny;
         t--;
     }
+    
     cout << r << " " << c;
     return 0;
 }
