@@ -19,13 +19,13 @@ int CntBeautifulSeq(int a, int b, int c) {
 
     for(int i = 0; i < m; i++) {
         for(int j = 0; j < m; j++) {
-            if(j == i) continue;
+            // if(j == i) continue;
             for(int k = 0; k < m; k++) {
-                if(k == i || k == j) continue;
-                // if(i != j && j != k && i != k) {
-                    // if(a_arr[a] == b_arr[i] && a_arr[b] == b_arr[j] && a_arr[c] == b_arr[k]) cnt++;
-                    cout << b_arr[i] << " " << b_arr[j] << " " << b_arr[k] << endl;
-                // }
+                // if(k == i || k == j) continue;
+                if(i != j && j != k && i != k) {
+                    if(a_arr[a] == b_arr[i] && a_arr[b] == b_arr[j] && a_arr[c] == b_arr[k]) cnt++;
+                    // cout << b_arr[i] << " " << b_arr[j] << " " << b_arr[k] << endl;
+                }
             }
         }
     }
@@ -40,11 +40,12 @@ int main() {
     for(int i = 0; i < m; i++) cin >> b_arr[i];
 
     sort(b_arr, b_arr + m);
-
+    // CntBeautifulSeq(0, 1, 2);
     int ans = 0;
-    for(int i = 0; i < n - m - 1; i++) {
+    for(int i = 0; i < n - m + 1; i++) {
+        // cout << "a arr: " << a_arr[i] << " " << a_arr[i + 1] << " " << a_arr[i + 2] << endl;
         ans += CntBeautifulSeq(i, i + 1, i + 2);
     }
-    // cout << ans;
+    cout << ans;
     return 0;
 }
