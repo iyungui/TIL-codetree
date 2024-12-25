@@ -3,7 +3,6 @@
 using namespace std;
 
 #define MAX_N 100
-#define MAX_XX 2000000
 
 int main() {
     // 여기에 코드를 작성해주세요.
@@ -21,7 +20,7 @@ int main() {
         max_x = max(max_x, x2[i]);
     }
         
-    int countings[MAX_XX];
+    int countings[2000002] = {0};
 
     for(int i = 0; i < n; i++) {
         for(int j = x1[i]; j <= x2[i]; j++) {
