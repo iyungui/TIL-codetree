@@ -13,17 +13,14 @@ bool IsLeapYear(int y) {
 }
 
 bool IsExist(int m, int d, bool IsLeapYear) {
+
+    if((m == 4 || m == 6 || m == 9 || m == 11) && d == 31) return false;
+    if(IsLeapYear && m == 2 && d > 29) return false;
+    if(!IsLeapYear && m == 2 && d > 28) return false;
+
     for(int i = 0; i <= 12; i++) {
         for(int j = 0; j <= 31; j++) {
-            if(j == 31 && (i == 4 || i == 6 || i == 9 || i == 11)) return false;
-
             if(i == m && j == d) return true; 
-
-            if(IsLeapYear) {
-                if(i == 2 && j == 29) break;
-            } else {
-                if(i == 2 && j == 28) break;
-            }
         }
     }
     return false;
