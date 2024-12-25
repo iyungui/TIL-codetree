@@ -58,18 +58,10 @@ int main() {
 
     for(int i = 0; i < n; i++) {
         for(int j = i + 1; j < n; j++) {
-            if(min_distance > abs(x[i] - x[j]) + abs(y[i] - y[j])) {
-                min_distance = abs(x[i] - x[j]) + abs(y[i] - y[j]);
-
-                x1 = x[i];
-                x2 = x[j];
-                y1 = y[i];
-                y2 = y[j];
-            }
-            
+            min_distance = min(min_distance, (x[i] - x[j]) * (x[i] - x[j]) + (y[i] - y[j]) * (y[i] - y[j]));
         }
     }
 
-    cout << (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
+    cout << min_distance;
     return 0;
 }
