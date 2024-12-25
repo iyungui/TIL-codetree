@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 bool IsLeapYear(int y) {
@@ -34,7 +35,8 @@ string IsSeason(int y, int m, int d) {
             if(m >= 3 && m <= 5) return "Spring";
             else if (m >= 6 && m <= 8) return "Summer";
             else if (m >= 9 && m <= 11) return "Fall";
-            else return "Winter";
+            else if (m == 12 || m >= 1 && m <= 2) return "Winter";
+            else return "-1";
         } else {
             return "-1";
         }
@@ -43,7 +45,8 @@ string IsSeason(int y, int m, int d) {
             if(m >= 3 && m <= 5) return "Spring";
             else if (m >= 6 && m <= 8) return "Summer";
             else if (m >= 9 && m <= 11) return "Fall";
-            else return "Winter";
+            else if (m == 12 || m >= 1 && m <= 2) return "Winter";
+            else return "-1";
         } else {
             return "-1";
         }
