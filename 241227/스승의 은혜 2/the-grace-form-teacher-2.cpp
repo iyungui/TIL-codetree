@@ -19,7 +19,7 @@ int main() {
             ans++;
             b -= p[i];
         } else if(b - p[i] <= 0) {
-            if(b - (p[i] / 2) > 0) {
+            if(b - (p[i] / 2) >= 0) {
                 ans++;
                 b -= p[i];
             } else break;
