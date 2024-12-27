@@ -19,14 +19,23 @@ int main() {
 
     for(int i = 1; i <= n; i++) {
         int counting_arr[MAX_N + 1] = {0};
+        int idx;
         for(int j = 1; j <= k; j++) {
-            for(int l = i + 1; l <= n; l++) counting_arr[arr[j][l]]++;
+
+            for(int l = 1; l <= n; l++)
+                if(arr[j][l] == i) idx = l;
+
+            for(int l = idx + 1; l <= n; l++) {
+                counting_arr[arr[j][l]]++;
+            }
         }
+
         for(int j = 1; j <= n; j++) {
             if(counting_arr[j] == k) cnt++;
         }
     }
 
     cout << cnt;
+
     return 0;
 }
