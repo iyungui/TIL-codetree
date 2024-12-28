@@ -21,6 +21,7 @@ int n, b;
 Price prices[MAX_N + 1];
 
 bool Cmp(Price a, Price b) {
+    if(a.p + a.s == b.p + b.s) return a.p > b.p;
     return a.p + a.s < b.p + b.s;
 }
 
@@ -43,9 +44,10 @@ int main() {
             // 구매
             b -= prices[i].p + prices[i].s;
             ans++;
+
         } else if(b - (prices[i].p + prices[i].s) <= 0) {   // 해당 물건을 사려고 할 때, 예산이 부족하거나 마지막(0원) 일 때
             // 쿠폰 적용 (마지막으로 담을 물건에 적용)
-            if(b - (prices[i].p / 2) >= 0) {
+            if(b - ((prices[i].p / 2) + prices[i].s) >= 0) {
                 b -= prices[i].p / 2 + prices[i].s;
                 ans++;
             } else break;
