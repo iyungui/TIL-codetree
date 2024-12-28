@@ -26,13 +26,12 @@ int main() {
         }
 
         int len = DigitNum(i);
-        bool satisfiedN = false;
-        bool satisfied1 = false;
+        bool satisfied = false;
         for(int j = 0; j <= 9; j++) {
-            if(counting[j] == len - 1) satisfiedN = true;
-            if(counting[j] == 1) satisfied1 = true;
+            if(counting[j] == len - 1) satisfied = true;
+            // if(counting[j] == 1) satisfied1 = true;
         }
-        if(satisfiedN && satisfied1) cnt++;
+        if(satisfied) cnt++;
     }
 
     cout << cnt;
