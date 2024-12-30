@@ -6,24 +6,22 @@ using namespace std;
 
 int n;
 int countings[MAX_N];
-int x[MAX_N], x2[MAX_N];
+int arr[MAX_N][2];
 
 int main() {
     cin >> n;
 
     for(int i = 0; i < n; i++)
-        cin >> x[i] >> x2[i];
+        cin >> arr[i][0] >> arr[i][1];
     
     for(int i = 0; i < n; i++) {
-        for(int j = x[i]; j <= x2[i]; j++) {
-            countings[j]++;
-        }
+        int x = arr[i][0], y = arr[i][1];
+
+        for(int j = x; j <= y; j++) countings[j]++;
     }
 
     int max_cnt = 0;
-    for(int i = 1; i <= MAX_N; i++) {
-        max_cnt = max(max_cnt, countings[i]);
-    }
+    for(int i = 1; i <= 10; i++) max_cnt = max(max_cnt, countings[i]);
     cout << max_cnt;
     return 0;
 }
