@@ -23,12 +23,17 @@ int main() {
             len += 2;
         }
 
-        if(i == a.length() - 1) {
+        if(i == a.length() - 1 && cnt >= 2) {
             // cout << a[i - 1] << cnt;
             new_a += a[i - 1];
             char after = cnt + '0';
             new_a += after;
 
+            len += 2;
+        } else if (i == a.length() - 1 && cnt == 1) {
+            new_a += a[i];
+            char after = cnt + '0';
+            new_a += after;
             len += 2;
         }
     }
