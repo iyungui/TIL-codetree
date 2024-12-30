@@ -21,7 +21,7 @@ int main() {
     }
 
     int max_cnt = 0;
-    for(int i = 1; i <= 10; i++) max_cnt = max(max_cnt, countings[i]);
+    for(int i = 1; i <= 100; i++) max_cnt = max(max_cnt, countings[i]);
     cout << max_cnt;
     return 0;
 }
