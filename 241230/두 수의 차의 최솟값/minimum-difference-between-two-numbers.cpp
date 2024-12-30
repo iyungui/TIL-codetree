@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <climits>
 using namespace std;
 
 #define MAX_N 10
@@ -12,7 +13,7 @@ int main() {
     cin >> n;
 
     for(int i = 0; i < n; i++) cin >> arr[i];
-    int min_val = 10;
+    int min_val = INT_MAX;
     for(int i = 0; i < n; i++) {
         for(int j = i + 1; j < n; j++)
             if(min_val > (abs(arr[i] - arr[j]))) min_val = abs(arr[i] - arr[j]); 
