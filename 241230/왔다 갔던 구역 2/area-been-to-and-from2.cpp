@@ -4,14 +4,14 @@
 #include <algorithm>
 using namespace std;
 
-#define OFFSET 1000  // 충분한 오프셋 추가
+#define OFFSET 1000
 #define MAX_X 2000
 #define MAX_N 100
 
 int n;
 int x[MAX_N + 1];
 char a[MAX_N + 1];
-int countings[2 * OFFSET + 1] = {0};  // 음수와 양수 모두 저장 가능하도록 수정
+int countings[2 * OFFSET + 1] = {0};
 int p = 0;
 
 int main() {
@@ -35,29 +35,28 @@ int main() {
        max_p = max(max_p, p);
    }
 
-    bool IsFirst = true;
-    int sum = 0;
-    int temp_a = 0, temp_b = 0;
+   bool IsFirst = true;
+   int sum = 0;
+   int temp_a = 0, temp_b = 0;
 
-    for(int i = min_p; i <= max_p; i++) {
-        if(countings[i + OFFSET] >= 2 && IsFirst) {
-            temp_a = i;  // 구간의 시작점
-            IsFirst = false;
-        } 
-        else if(!IsFirst && countings[i + OFFSET] < 2) {
-            temp_b = i - 1;  // 구간의 끝점
-            IsFirst = true;
-            sum += (temp_b - temp_a);
-        }
-    }
+   for(int i = min_p; i <= max_p; i++) {
+       if(countings[i + OFFSET] >= 2 && IsFirst) {
+           temp_a = i;
+           IsFirst = false;
+       } 
+       else if(!IsFirst && countings[i + OFFSET] < 2) {
+           temp_b = i - 1;
+           sum += (temp_b - temp_a);
+           IsFirst = true;
+       }
+   }
 
-    // 마지막 구간이 max_p에서 끝나는 경우를 처리
-    if(!IsFirst) {
-        temp_b = max_p;
-        sum += (temp_b - temp_a);
-    }
+   if(!IsFirst) {
+       temp_b = max_p;
+       sum += (temp_b - temp_a);
+   }
 
-    cout << sum;
+   cout << sum - 1;
 
    return 0;
 }
