@@ -38,11 +38,17 @@ int main() {
         }
     }
 
-    cout << len << endl;
+    if(a.length() == 1) {
+        cout << 2 << endl;
+        cout << a[0] << 1;
+    } else {
+        cout << len << endl;
 
-    for(int i = 0; i < len; i++) {
-        cout << new_a[i];
+        for(int i = 0; i < len; i++) {
+            cout << new_a[i];
+        }
     }
+
 
     return 0;
 }
