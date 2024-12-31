@@ -7,14 +7,18 @@ int main() {
     // 여기에 코드를 작성해주세요.
     cin >> a >> b >> c;
 
-    int ans = 0, sum = 0;
-    
-    for(int i = 0; i <= 1000; i++) {
-        for(int j = 0; j <= 1000; j++) {
-            sum = (a * i) + (b * j);
-            if(sum <= c) ans = max(ans, sum);
-        }
+    int ans = 0;
+
+    // a를 몇 회 사용할지 전부 시도
+    for(int i = 0 ; i * a <= c; i++) {
+        int cnt = a * i;
+
+        int num_b = (c - cnt) / b;
+        cnt += num_b * b;
+
+        ans = max(ans, cnt);
     }
+
     cout << ans;
 
     return 0;
