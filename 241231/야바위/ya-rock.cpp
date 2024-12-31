@@ -3,31 +3,35 @@
 using namespace std;
 
 #define MAX_N 100
+#define MAX_NUM 3
+
 int n;
-int arr[MAX_N][3];
+int a[MAX_N], b[MAX_N], c[MAX_N];
+int yabawi[MAX_NUM + 1];
 
 int main() {
     // 여기에 코드를 작성해주세요.
     cin >> n;
+
     for(int i = 0; i < n; i++)
-        cin >> arr[i][0] >> arr[i][1] >> arr[i][2];
+        cin >> a[i] >> b[i] >> c[i];
 
-    
-    int ans = 0;
+    int max_score = 0;
 
-    for(int i = 0; i < 3; i++) {
+    for(int i = 1; i <= 3; i++) {
+        yabawi[1] = yabawi[2] = yabawi[3] = 0;
+        yabawi[i] = 1;
         int score = 0;
 
-        for(int j = 0; i < n; i++) {
-            // 조약돌이 있는 컵
-            // arr[j][i];
+        for(int j = 0; j < n; j++) {
+            swap(yabawi[a[j]], yabawi[b[j]]);
 
-            if(arr[j][2] == arr[j][i]) score++;
-
+            if(yabawi[c[j]]) score++;
         }
 
-        ans = max(ans, score);
+        max_score = max(max_score, score);
     }
-    cout << ans;
+
+    cout << max_score;
     return 0;
 }
