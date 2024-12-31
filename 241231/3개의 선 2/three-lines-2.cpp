@@ -56,6 +56,7 @@ int main() {
                     break;
                 }
 
+                success = true;
                 // x축 평행 0, y축 평행 3 일 때
                 for(int l = 0; l < n; l++) {
                     if(y[l] == i || y[l] == j || y[l] == k)
@@ -65,7 +66,6 @@ int main() {
 
                 if(success) {
                     ans = 1;
-                    break;
                 }
 
             }
