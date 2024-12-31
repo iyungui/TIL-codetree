@@ -5,7 +5,7 @@ using namespace std;
 #define N 10
 #define OFFSET 100
 
-int x1[N + 1], y1[N + 1], x2[N + 1], y2[N + 1];
+int x1[N], y1[N], x2[N], y2[N];
 int checked[MAX_R + 1][MAX_R + 1];
 int n;
 
@@ -22,20 +22,11 @@ int main() {
         y2[i] += OFFSET;
     }
 
-    bool IsRed = true;
-
     for(int i = 0; i < n; i++) {
-        for(int x = x1[i]; x < x2[i]; x++) {
-            for(int y = y1[i]; y < y2[i]; y++) {
-                if(IsRed) checked[x][y] = 1;
-                else checked[x][y] = 2;
-            }
-        }
-
-        if(IsRed) IsRed = false;
-        else IsRed = true;
-    }
-
+        for(int x = x1[i]; x < x2[i]; x++)
+            for(int y = y1[i]; y < y2[i]; y++)
+                checked[x][y] = i % 2 ? 2 : 1;
+                
     int area = 0;
 
     for(int x = 0; x <= MAX_R; x++)
