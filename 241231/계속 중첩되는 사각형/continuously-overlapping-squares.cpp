@@ -22,11 +22,11 @@ int main() {
         y2[i] += OFFSET;
     }
 
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         for(int x = x1[i]; x < x2[i]; x++)
             for(int y = y1[i]; y < y2[i]; y++)
                 checked[x][y] = i % 2 ? 2 : 1;
-                
+
     int area = 0;
 
     for(int x = 0; x <= MAX_R; x++)
