@@ -1,65 +1,51 @@
 #include <iostream>
+#include <algorithm>
+
+#define N 2
+#define MAX_R 2000
+#define OFFSET 1000
+
 using namespace std;
 
-#define OFFSET 1000
-#define MAX_SIZE 2000
+int x1[N], y1[N];
+int x2[N], y2[N];
 
-int x1, x2, y1, y2;
-int grid_a[MAX_SIZE + 1][MAX_SIZE + 1];
-int grid_b[MAX_SIZE + 1][MAX_SIZE + 1];
+int checked[MAX_R + 1][MAX_R + 1];
 
-void GetGrid(char c) {
-    x1 += OFFSET;
-    y1 += OFFSET;
-    x2 += OFFSET;
-    y2 += OFFSET;
+int main() {
+    for(int i = 0; i < N; i++) {
+        cin >> x1[i] >> y1[i] >> x2[i] >> y2[i];
 
-    for(int i = x1; i < x2; i++) {
-        for(int j = y1; j < y2; j++)
-            if(c == 'a') grid_a[i][j] = 1;
-            else grid_b[i][j] = 1;
+        x1[i] += OFFSET;
+        y1[i] += OFFSET;
+        x2[i] += OFFSET;
+        y2[i] += OFFSET;
     }
-}
 
-int GetArea(bool isSquare) {
-    int area = 0;
-
-    for(int i = 0; i <= MAX_SIZE; i++) {
-        for(int j = 0; j <= MAX_SIZE; j++) {
-            if(isSquare) {
-                if(grid_a[i][j] == 1) {
-                    if(grid_b[i][j] == 1) continue;
-                    area++;
-                }
-            } else {
-                if(grid_a[i][j] == 1) {
-                    area++;
-                }
+    for(int i = 0; i < N; i++)
+        for(int x = x1[i]; x < x2[i]; x++)
+            for(int y = y1[i]; y < y2[i]; y++)
+                checked[x][y] = i + 1;
+    
+    int min_x = MAX_R, max_x = 0;
+    int min_y = MAX_R, max_y = 0;
+    bool first_rect_exist = false;
+    for(int x = 0; x <= MAX_R; x++) {
+        for(int y = 0; y <= MAX_R; y++) {
+            if(checked[x][y] == 1) {
+                first_rect_exist = true;
+                min_x = min(min_x, x);
+                max_x = max(max_x, x);
+                min_y = min(min_y, y);
+                max_y = max(max_y, y);
             }
         }
     }
 
-    return area;
-}
+    int area = 0;
+    if(!first_rect_exist) area = 0;
+    else area = (max_x - min_x + 1) * (max_y - min_y + 1);
 
-int main() {
-    cin >> x1 >> y1 >> x2 >> y2;
-    int min_ax = x1, min_ay = y1;
-    int max_ax = x2, max_ay = y2;
-    GetGrid('a');
-
-    cin >> x1 >> y1 >> x2 >> y2;
-    GetGrid('b');
-
-    int ans;
-
-    // a - b 가 직사각형이라면
-    if((min_ax >= x1 && max_ax <= x2) || (min_ay >= y1 && max_ay <= y2)) {
-        ans = GetArea(true);
-    } else {
-        ans = GetArea(false);
-    }
-
-    cout << ans;
+    cout << area;
     return 0;
 }
