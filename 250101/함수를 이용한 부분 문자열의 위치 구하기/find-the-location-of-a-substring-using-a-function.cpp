@@ -8,7 +8,10 @@ int GetStartIdx() {
     // 존재하지 않는다면 -1
     int idx = -1;
     for(int i = 0; i < a.length() - b.length() + 1; i++) {
-        if(a.substr(i, b.length()) == b) idx = i;
+        if(a.substr(i, b.length()) == b) {
+            idx = i;
+            break;
+        }
     } 
 
     return idx;
