@@ -1,21 +1,31 @@
 #include <iostream>
 using namespace std;
 
-string a;   // 입력 문자열
-string b;   // 목적 문자열
+string text, pattern;
 
-int GetStartIdx() {
-    for(int i = 0; i < a.length() - b.length() + 1; i++)
-        if(a.substr(i, b.length()) == b) return i;
+bool IsSubStr(int start_idx) {
+    int n = (int) text.size();
+    int m = (int) pattern.size();
 
+    if(start_idx + m - 1 >= n) return false;
+
+    for(int j = 0; j < m; j++)
+        if(text[start_idx + j] != pattern[j]) return false;
+
+    return true;
+}
+
+int FindIndex() {
+    for(int i = 0; i < text.length(); i++)
+        if(IsSubStr(i)) return i;
     return -1;
 }
 
 int main() {
-    cin >> a >> b;
+    cin >> text;
+    cin >> pattern;
 
-    int start_idx = GetStartIdx();
-
-    cout << start_idx;
+    cout << FindIndex();
+    
     return 0;
 }
