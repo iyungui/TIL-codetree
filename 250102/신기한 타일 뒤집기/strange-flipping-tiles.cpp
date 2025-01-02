@@ -2,7 +2,7 @@
 using namespace std;
 
 #define MAX_R 200000
-#define OFFSET 100
+#define OFFSET 100000
 
 int n;
 int checked[MAX_R + 1];
