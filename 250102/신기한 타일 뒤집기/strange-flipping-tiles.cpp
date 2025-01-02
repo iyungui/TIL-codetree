@@ -6,25 +6,26 @@ using namespace std;
 
 int n;
 int checked[MAX_R + 1];
-int cur = 0;
+int cur = OFFSET;
 
 int main() {
     cin >> n;
+    
     for(int i = 0; i < n; i++) {
         int distance;
         char direction;
         cin >> distance >> direction;
-
+        
         if(direction == 'R') {
             // 현재 위치부터 distance개의 타일을 뒤집음
             for(int j = 0; j < distance; j++) {
-                checked[cur + OFFSET + j] = 2;
+                checked[cur + j] = 2;
             }
             cur += (distance - 1);  // 마지막으로 뒤집은 타일의 위치로
         } else {  // direction == 'L'
             // 현재 위치부터 왼쪽으로 distance개의 타일을 뒤집음
             for(int j = 0; j < distance; j++) {
-                checked[cur + OFFSET - j] = 1;
+                checked[cur - j] = 1;
             }
             cur -= (distance - 1);  // 마지막으로 뒤집은 타일의 위치로
         }
