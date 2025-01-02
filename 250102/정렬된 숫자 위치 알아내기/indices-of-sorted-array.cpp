@@ -6,12 +6,10 @@ using namespace std;
 
 class Seq {
     public:
-        int x, num, idx;
-        // idx 기본값 설정 방법?
-        Seq(int x, int num, int idx = 0) {
+        int x, num;
+        Seq(int x, int num) {
             this->x = x;
             this->num = num;
-            this->idx = idx;
         }
 
         Seq() {};
@@ -19,37 +17,31 @@ class Seq {
 
 int n;
 Seq seqs[MAX_N];
+int answer[MAX_N];
 
-bool Cmp_x(Seq a, Seq b) {
+bool Cmp(Seq a, Seq b) {
     if(a.x == b.x) return a.num < b.num;
     return a.x < b.x;
-}
-
-bool Cmp_num(Seq a, Seq b) {
-    return a.num < b.num;
 }
 
 int main() {
     cin >> n;
 
-    int x, num, idx;
+    int x, num;
     for(int i = 0; i < n; i++) {
-        
         cin >> x;
-
-        seqs[i] = Seq(x, i + 1);
+        seqs[i] = Seq(x, i);
     }
 
-    sort(seqs, seqs + n, Cmp_x);
+    sort(seqs, seqs + n, Cmp);
 
     for(int i = 0; i < n; i++) {
-        seqs[i].idx = i + 1;
+        // index correction
+        answer[seqs[i].num] = i + 1;
     }
 
-    sort(seqs, seqs + n, Cmp_num);
-
     for(int i = 0; i < n; i++) {
-        cout << seqs[i].idx << " ";
+        cout << answer[i] << " ";
     }
     return 0;
 }
