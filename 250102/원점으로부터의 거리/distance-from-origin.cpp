@@ -1,48 +1,30 @@
 #include <iostream>
-#include <cstdlib>
 #include <algorithm>
+#include <cmath>
+#include <utility>
+
+#define MAXN 1000
+
 using namespace std;
 
-#define MAX_N 1000
-
-class Dot {
-    public:
-        int x, y;
-        int num;
-        Dot(int x, int y, int num) {
-            this->x = x;
-            this->y = y;
-            this->num = num;
-        }
-
-        Dot() {};
-};
-
-int n;
-Dot dots[MAX_N];
-
-bool Cmp(Dot a, Dot b) {
-    int a_distance = abs(a.x - 0) + abs(a.y - 0);
-    int b_distance = abs(b.x - 0) + abs(b.y - 0);
-
-    if(a_distance == b_distance) {
-        return a.num < b.num;
-    } else return a_distance < b_distance;
+int GetDistFromOrigin(int x, int y) {
+    return abs(x) + abs(y);
 }
+
+pair<int, int> distances[MAXN];
+int n;
 
 int main() {
     cin >> n;
-
+    int x, y;
     for(int i = 0; i < n; i++) {
-        int x, y;
-        int num = i + 1;
         cin >> x >> y;
-        dots[i] = Dot(x, y, num);
+        distances[i] = make_pair(GetDistFromOrigin(x, y), i + 1);
     }
+    sort(distances, distances + n);
 
-    sort(dots, dots + n, Cmp);
     for(int i = 0; i < n; i++) {
-        cout << dots[i].num << endl;
+        cout << distances[i].second << endl;
     }
     return 0;
 }
