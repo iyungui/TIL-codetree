@@ -1,47 +1,32 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
+
+#define MAX_NUM 1000
+
 using namespace std;
 
-#define MAX_N 1000
-
-class Seq {
-    public:
-        int x, num;
-        Seq(int x, int num) {
-            this->x = x;
-            this->num = num;
-        }
-
-        Seq() {};
-};
-
-int n;
-Seq seqs[MAX_N];
-int answer[MAX_N];
-
-bool Cmp(Seq a, Seq b) {
-    if(a.x == b.x) return a.num < b.num;
-    return a.x < b.x;
-}
+int n, num_cache;
+int answer[MAX_NUM];
+vector<pair<int, int>> numbers;
 
 int main() {
     cin >> n;
-
-    int x, num;
     for(int i = 0; i < n; i++) {
-        cin >> x;
-        seqs[i] = Seq(x, i);
+        cin >> num_cache;
+        numbers.push_back(make_pair(num_cache, i));
     }
 
-    sort(seqs, seqs + n, Cmp);
+    // pair 의 num_cache 오름차순 정렬
+    // 만약 pair 의 num_cache가 같다면, i에 대해서 오름차순 정렬
+    sort(numbers.begin(), numbers.end());
 
-    for(int i = 0; i < n; i++) {
-        // index correction
-        answer[seqs[i].num] = i + 1;
-    }
-
-    for(int i = 0; i < n; i++) {
+    // index correction
+    for(int i = 0; i < n; i++)
+        answer[numbers[i].second] = i + 1;
+    
+    for(int i = 0; i < n; i++)
         cout << answer[i] << " ";
-    }
+
     return 0;
 }
