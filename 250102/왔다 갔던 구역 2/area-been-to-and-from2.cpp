@@ -2,14 +2,12 @@
 using namespace std;
 
 #define MAX_R 2000
-// #define OFFSET 1000
 
 int n;
-int x;  // 이동거리
-char a; // 명령어
-int num = 1000; // 현재위치
-int countings[MAX_R + 1];   // 0부터 2000까지
-int answer[MAX_R + 1];
+int x;  
+char a; 
+int num = 1000; 
+int countings[MAX_R + 1];   
 
 int main() {
     cin >> n;
@@ -17,52 +15,27 @@ int main() {
         cin >> x >> a;
         
         if(a == 'L') {
-            for(int j = num; j <= num + x; j++) {
+            int end = num - x;  // 도착 지점
+            for(int j = num - 1; j >= end; j--) {  // 현재 위치 직전부터 도착 지점까지
                 countings[j]++;
             }
-            // 현재 위치 업데이트
-            num += x;
-
-            // 디버깅
-            if(num > 2000) cout << "INDEX OUT OF RANGE" << endl;
-
+            num = end;       
         } else if(a == 'R') {
-            for(int j = num - x; j <= num; j++) {
+            int end = num + x;  // 도착 지점
+            for(int j = num; j < end; j++) {  // 현재 위치부터 도착 지점 직전까지
                 countings[j]++;
             }
-            num -= x;
-            
-            // 디버깅
-            if(num < 0) cout << "INDEX OUT OF RANGE" << endl;
-
-            // for(int j = num; j >= num - x; j--) {
-
-            // }
+            num = end;
         }
     }
 
-    int sum = 0;           // 총 구간의 길이를 저장
-    int start = -1;        // 현재 구간의 시작점
-
+    int sum = 0;
     for(int i = 0; i <= MAX_R; i++) {
         if(countings[i] >= 2) {
-            if(start == -1) {  // 새로운 구간 시작
-                start = i;
-            }
-        } else {
-            if(start != -1) {  // 구간이 끝남
-                sum += (i - start) - 1;  // 현재 구간의 길이를 더함
-                start = -1;
-            }
+            sum++;
         }
     }
 
-    // 마지막 구간이 배열 끝까지 이어진 경우 처리
-    if(start != -1) {
-        sum += (MAX_R - start) - 1;
-    }
-
-    cout << sum;  // 총 구간의 길이 출력
-
+    cout << sum;
     return 0;
 }
