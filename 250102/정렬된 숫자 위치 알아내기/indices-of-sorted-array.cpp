@@ -8,7 +8,7 @@ class Seq {
     public:
         int x, num, idx;
         // idx 기본값 설정 방법?
-        Seq(int x, int num, int idx) {
+        Seq(int x, int num, int idx = 0) {
             this->x = x;
             this->num = num;
             this->idx = idx;
@@ -37,7 +37,7 @@ int main() {
         
         cin >> x;
 
-        seqs[i] = Seq(x, i + 1, i + 1);
+        seqs[i] = Seq(x, i + 1);
     }
 
     sort(seqs, seqs + n, Cmp_x);
