@@ -40,12 +40,13 @@ int main() {
     }
 
     int ans = 0;
-    for(int i = 1; i <= MAX_T; i++) {
+    for(int i = 1; i <= total_t; i++) {
         if(pos_a[i] == pos_b[i]) {
             ans = i;
             break;
         }
     }
-    cout << ans;
+    if(ans) cout << ans;
+    else cout << -1;
     return 0;
 }
