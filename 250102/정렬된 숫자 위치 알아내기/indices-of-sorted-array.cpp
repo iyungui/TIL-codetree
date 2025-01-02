@@ -21,6 +21,7 @@ int n;
 Seq seqs[MAX_N];
 
 bool Cmp_x(Seq a, Seq b) {
+    if(a.x == b.x) return a.num < b.num;
     return a.x < b.x;
 }
 
