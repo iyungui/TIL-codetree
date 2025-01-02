@@ -1,40 +1,36 @@
 #include <iostream>
 using namespace std;
 
-#define MAX_R 200000
-#define OFFSET 100000
+#define MAX_K 100000
 
+int arr[MAX_K * 2 + 1];
 int n;
-int checked[MAX_R + 1];
-int cur = OFFSET;
+int cur = MAX_K;
 
 int main() {
     cin >> n;
-    
+
     for(int i = 0; i < n; i++) {
-        int distance;
-        char direction;
-        cin >> distance >> direction;
-        
-        if(direction == 'R') {
-            // 현재 위치부터 distance개의 타일을 뒤집음
-            for(int j = 0; j < distance; j++) {
-                checked[cur + j] = 2;
-            }
-            cur += (distance - 1);  // 마지막으로 뒤집은 타일의 위치로
-        } else {  // direction == 'L'
-            // 현재 위치부터 왼쪽으로 distance개의 타일을 뒤집음
-            for(int j = 0; j < distance; j++) {
-                checked[cur - j] = 1;
-            }
-            cur -= (distance - 1);  // 마지막으로 뒤집은 타일의 위치로
+        int x;  // 이동 거리
+        char a; // 이동 방향
+
+        cin >> x >> a;
+
+        if(a == 'L') {
+            for(int j = 0; j < x; j++)  // 이동한 거리만큼 반복
+                arr[cur - j] = 1;   // 흰색은 1
+            cur -= (x - 1); // 마지막 타일 뒤집은 위치. (현재 타일도 카운트됨)
+        } else if(a == 'R') {
+            for(int j = 0; j < x; j++)
+                arr[cur + j] = 2;   // 검은색은 2
+            cur += (x - 1);
         }
     }
 
     int cnt_w = 0, cnt_b = 0;
-    for(int i = 0; i <= MAX_R; i++) {
-        if(checked[i] == 1) cnt_w++;
-        else if(checked[i] == 2) cnt_b++;
+    for(int i = 0; i <= MAX_K * 2; i++) {
+        if(arr[i] == 1) cnt_w++;
+        else if(arr[i] == 2) cnt_b++;
     }
     cout << cnt_w << " " << cnt_b;
     return 0;
