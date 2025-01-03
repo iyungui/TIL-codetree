@@ -66,7 +66,7 @@ int main() {
             arr[i][j] = line[j - 1];
         }
     }
-    
+
     cin >> k;
 
     // 출발지점
@@ -78,17 +78,14 @@ int main() {
 
     int nx, ny;
 
-    // cout << "시작 " << arr[row][col] << " ";
     curr_dir = Rotate(row, col, curr_dir, arr[row][col]);
-    int ans = 1;    // 튕기고 시작
-    // cout << arr[row][col] << " " << ans << " ";
+    int ans = 1;
     while(true) {
         
         nx = row + dx[curr_dir];
-        ny = col = dy[curr_dir];
+        ny = col + dy[curr_dir];
 
         if(!InRange(nx, ny)) {
-            ans++;
             break;
         }
 
