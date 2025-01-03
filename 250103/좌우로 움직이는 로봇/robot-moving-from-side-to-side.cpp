@@ -1,12 +1,11 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 #define MAX_T 1000000
 
 int n, m;
-int a[MAX_T];
-int b[MAX_T];
+int a[MAX_T + 1];
+int b[MAX_T + 1];
 
 int a_total_t = 1, b_total_t = 1;
 
