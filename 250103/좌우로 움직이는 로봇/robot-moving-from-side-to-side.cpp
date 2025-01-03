@@ -1,56 +1,71 @@
 #include <iostream>
-#include <vector>
-#include <map>
+#include <algorithm>
 using namespace std;
 
-int n, m;
-map<int, int> pos_a, pos_b;  // time -> position
+#define MAX_T 1000000
 
-void record_moves(map<int, int>& positions, int moves) {
-    int curr_time = 0;
-    int curr_pos = 0;
-    
-    for(int i = 0; i < moves; i++) {
+int n, m;
+int a[MAX_T];
+int b[MAX_T];
+
+int a_total_t = 1, b_total_t = 1;
+
+int main() {
+    // Please write your code here.
+    cin >> n >> m;
+    for(int i = 0; i < n; i++) {
         int t;
         char d;
         cin >> t >> d;
         
-        // 현재 시간부터 다음 움직임 시작 전까지의 위치 기록
-        for(int j = curr_time + 1; j <= curr_time + t; j++) {
-            curr_pos += (d == 'L' ? -1 : 1);
-            positions[j] = curr_pos;
+        if(d == 'L') {
+            while(t--) {
+                a[a_total_t] = a[a_total_t - 1] - 1;
+                a_total_t++;
+            }
+        } else if(d == 'R') {
+            while(t--) {
+                a[a_total_t] = a[a_total_t - 1] + 1;
+                a_total_t++;
+            }
         }
-        curr_time += t;
     }
-    positions[0] = 0;  // 초기 위치
-}
 
-int main() {
-    cin >> n >> m;
-    
-    record_moves(pos_a, n);
-    record_moves(pos_b, m);
-    
-    // 마지막 시간 찾기
-    int max_time = 0;
-    for(auto& p : pos_a) max_time = max(max_time, p.first);
-    for(auto& p : pos_b) max_time = max(max_time, p.first);
-    
-    int ans = 0;
-    int prev_a = 0, prev_b = 0;
-    
-    for(int t = 1; t <= max_time; t++) {
-        int curr_a = pos_a.count(t) ? pos_a[t] : prev_a;
-        int curr_b = pos_b.count(t) ? pos_b[t] : prev_b;
-        
-        if(prev_a != prev_b && curr_a == curr_b) {
-            ans++;
+    for(int i = 0; i < m; i++) {
+        int t;
+        char d;
+        cin >> t >> d;
+
+        if(d == 'L') {
+            while(t--) {
+                b[b_total_t] = b[b_total_t - 1] - 1;
+                b_total_t++;
+            }
+        } else if(d == 'R') {
+            while(t--) {
+                b[b_total_t] = b[b_total_t - 1] + 1;
+                b_total_t++;
+            }
         }
-        
-        prev_a = curr_a;
-        prev_b = curr_b;
     }
+
+    int total_t;
     
-    cout << ans << "\n";
+    if(a_total_t < b_total_t) {
+        total_t = b_total_t;
+        for(int i = a_total_t; i <= total_t; i++) a[i] = a[i - 1];
+
+    } else if(a_total_t > b_total_t) {
+        total_t = a_total_t;
+        for(int i = b_total_t; i <= total_t; i++) b[i] = b[i - 1];
+    }
+
+    int ans = 0;
+    for(int i = 1; i < total_t; i++) {
+        if(a[i] == b[i] && a[i - 1] != b[i - 1]) {
+            ans++;
+        } 
+    }
+    cout << ans;
     return 0;
 }
