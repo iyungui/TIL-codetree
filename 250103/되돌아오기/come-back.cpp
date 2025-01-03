@@ -21,25 +21,30 @@ int main() {
     cin >> n;
 
     int answer = -1;
+    int nx, ny;
     for(int i = 0; i < n; i++) {
         cin >> c >> d;
 
         int curr_dir = GetDir(c);
 
         for(int j = 0; j < d; j++) {
-            x += dx[curr_dir];
-            y += dy[curr_dir];
+            nx = x + dx[curr_dir];
+            ny = y + dy[curr_dir];
 
             t++;
 
-            if(x == 0 && y == 0) {
+            if(nx == 0 && ny == 0) {
                 answer = t;
                 break;
             }
+            x = nx;
+            y = ny;
         }
+
+        if(answer == t) break; 
     }
 
     cout << answer;
-    
+
     return 0;
 }
