@@ -1,73 +1,56 @@
 #include <iostream>
-#include <algorithm>
+#include <vector>
+#include <map>
 using namespace std;
 
-#define MAX_T 1000000
-
 int n, m;
-int a[MAX_T];
-int b[MAX_T];
-int x;
+map<int, int> pos_a, pos_b;  // time -> position
 
-int a_total_t, b_total_t;
-
-int main() {
-    // Please write your code here.
-    cin >> n >> m;
-    for(int i = 0; i < n; i++) {
+void record_moves(map<int, int>& positions, int moves) {
+    int curr_time = 0;
+    int curr_pos = 0;
+    
+    for(int i = 0; i < moves; i++) {
         int t;
         char d;
         cin >> t >> d;
         
-        if(d == 'L') {
-            while(t--) {
-                a[a_total_t++] = x--;
-            }
-        } else if(d == 'R') {
-            while(t--) {
-                a[a_total_t++] = x++;
-            }
+        // 현재 시간부터 다음 움직임 시작 전까지의 위치 기록
+        for(int j = curr_time + 1; j <= curr_time + t; j++) {
+            curr_pos += (d == 'L' ? -1 : 1);
+            positions[j] = curr_pos;
         }
+        curr_time += t;
     }
-    a[a_total_t] = x;
-    // 위치 초기화
-    x = 0;
+    positions[0] = 0;  // 초기 위치
+}
 
-    for(int i = 0; i < m; i++) {
-        int t;
-        char d;
-        cin >> t >> d;
-
-        if(d == 'L') {
-            while(t--) {
-                b[b_total_t++] = x--;
-            }
-        } else if(d == 'R') {
-            while(t--) {
-                b[b_total_t++] = x++;
-            }
-        }
-    }
-    b[b_total_t] = x;
-    int total_t;
+int main() {
+    cin >> n >> m;
     
-    if(a_total_t < b_total_t) {
-        total_t = b_total_t;
-        int temp = a[a_total_t];
-        for(int i = a_total_t; i <= total_t; i++) a[i] = temp;
-
-    } else if(a_total_t > b_total_t) {
-        total_t = a_total_t;
-        int temp = b[b_total_t];
-        for(int i = b_total_t; i <= total_t; i++) b[i] = temp;
-    }
-
+    record_moves(pos_a, n);
+    record_moves(pos_b, m);
+    
+    // 마지막 시간 찾기
+    int max_time = 0;
+    for(auto& p : pos_a) max_time = max(max_time, p.first);
+    for(auto& p : pos_b) max_time = max(max_time, p.first);
+    
     int ans = 0;
-    for(int i = 2; i <= total_t; i++) {
-        if(a[i - 1] != b[i - 1] && a[i] == b[i]) {
+    int prev_a = 0, prev_b = 0;
+    
+    for(int t = 1; t <= max_time; t++) {
+        int curr_a = pos_a.count(t) ? pos_a[t] : prev_a;
+        int curr_b = pos_b.count(t) ? pos_b[t] : prev_b;
+        
+        if(prev_a != prev_b && curr_a == curr_b) {
             ans++;
-        } 
+        }
+        
+        prev_a = curr_a;
+        prev_b = curr_b;
     }
-    cout << ans;
+    
+    cout << ans << "\n";
     return 0;
 }
