@@ -4,14 +4,14 @@ using namespace std;
 #define MAX_N 1000
 
 int n;
-char arr[MAX_N + 1][MAX_N + 1]; // 1 based Indexing
+char arr[MAX_N][MAX_N]; // 1 based Indexing
 
 int k;
 int x, y, move_dir;
 
 void Initialize(int num) {
     if(num <= n) {
-        x = 1; y = num; move_dir = 0;
+        x = 0; y = num - 1; move_dir = 0;
     } else if(num <= 2 * n) {
         x = num - n - 1; y = n - 1, move_dir = 1; 
     } else if(num <= 3 * n) {
@@ -22,7 +22,7 @@ void Initialize(int num) {
 }
 
 bool InRange(int x, int y) {
-    return x >= 1 && x <= n && y >= 1 && y <= n;
+    return x >= 0 && x < n && y >= 0 && y < n;
 }
 
 void Move(int next_dir) {
@@ -49,8 +49,8 @@ int Simulate() {
 int main() {
     cin >> n;
 
-    for(int i = 1; i <= n; i++)
-        for(int j = 1; j <= n; j++)
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
             cin >> arr[i][j];
 
     cin >> k;
