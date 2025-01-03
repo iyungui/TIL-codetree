@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 #define MAX_T 1000000
@@ -6,8 +7,9 @@ using namespace std;
 int n, m;
 int a[MAX_T + 1];
 int b[MAX_T + 1];
+int x;
 
-int a_total_t = 1, b_total_t = 1;
+int a_total_t, b_total_t;
 
 int main() {
     // Please write your code here.
@@ -19,16 +21,17 @@ int main() {
         
         if(d == 'L') {
             while(t--) {
-                a[a_total_t] = a[a_total_t - 1] - 1;
-                a_total_t++;
+                a[a_total_t++] = x--;
             }
         } else if(d == 'R') {
             while(t--) {
-                a[a_total_t] = a[a_total_t - 1] + 1;
-                a_total_t++;
+                a[a_total_t++] = x++;
             }
         }
     }
+    a[a_total_t] = x;
+    // 위치 초기화
+    x = 0;
 
     for(int i = 0; i < m; i++) {
         int t;
@@ -37,31 +40,31 @@ int main() {
 
         if(d == 'L') {
             while(t--) {
-                b[b_total_t] = b[b_total_t - 1] - 1;
-                b_total_t++;
+                b[b_total_t++] = x--;
             }
         } else if(d == 'R') {
             while(t--) {
-                b[b_total_t] = b[b_total_t - 1] + 1;
-                b_total_t++;
+                b[b_total_t++] = x++;
             }
         }
     }
-
+    b[b_total_t] = x;
     int total_t;
     
     if(a_total_t < b_total_t) {
         total_t = b_total_t;
-        for(int i = a_total_t; i <= total_t; i++) a[i] = a[i - 1];
+        int temp = a[a_total_t];
+        for(int i = a_total_t; i <= total_t; i++) a[i] = temp;
 
     } else if(a_total_t > b_total_t) {
         total_t = a_total_t;
-        for(int i = b_total_t; i <= total_t; i++) b[i] = b[i - 1];
+        int temp = b[b_total_t];
+        for(int i = b_total_t; i <= total_t; i++) b[i] = temp;
     }
 
     int ans = 0;
-    for(int i = 1; i < total_t; i++) {
-        if(a[i] == b[i] && a[i - 1] != b[i - 1]) {
+    for(int i = 2; i <= total_t; i++) {
+        if(a[i - 1] != b[i - 1] && a[i] == b[i]) {
             ans++;
         } 
     }
