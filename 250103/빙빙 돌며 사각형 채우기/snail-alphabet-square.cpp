@@ -3,11 +3,6 @@ using namespace std;
 
 #define MAX_NUM 100
 
-char alpha[26] = {
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-};
-
 int n, m;
 int x, y;   // current position
 char arr[MAX_NUM][MAX_NUM];
@@ -22,17 +17,13 @@ bool InRange(int x, int y) {
 
 int main() {
     cin >> n >> m;
-    // 모든 위치를 '0'으로 초기화
-    for(int i = 0; i < n; i++)
-        for(int j = 0; j < m; j++)
-            arr[i][j] = '0';
 
     int cnt = 0;
-    arr[0][0] = alpha[cnt++];
+    arr[0][0] = 'A';
     visited[0][0] = true;
     
     int nx, ny;
-    while(cnt < n * m) {
+    for(int i = 1; i < n * m; i++) {
         nx = x + dx[curr_dir];
         ny = y + dy[curr_dir];
 
@@ -42,7 +33,7 @@ int main() {
         x += dx[curr_dir];
         y += dy[curr_dir];
 
-        arr[x][y] = alpha[cnt % 26];
+        arr[x][y] = (char)(i % 26 + 'A');
         visited[x][y] = true;
         cnt++;
     }
