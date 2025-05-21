@@ -1,10 +1,27 @@
 import Foundation
 
 let n = Int(readLine()!)!
-let input = readLine()!.components(separatedBy: " ").map { Int($0)! }
+let inputString = readLine()!
+let input = inputString.split(separator: " ").map { Int($0)! }
 
-// 오름차순 정렬 결과 출력
-print(input.sorted().map { String($0) }.joined(separator: " "))
+// 오름차순 정렬
+let ascending = input.sorted()
+var ascendingResult = ""
+for (index, value) in ascending.enumerated() {
+    ascendingResult += String(value)
+    if index < ascending.count - 1 {
+        ascendingResult += " "
+    }
+}
+print(ascendingResult)
 
-// 내림차순 정렬 결과 출력
-print(input.sorted(by: >).map { String($0) }.joined(separator: " "))
+// 내림차순 정렬
+let descending = input.sorted(by: >)
+var descendingResult = ""
+for (index, value) in descending.enumerated() {
+    descendingResult += String(value)
+    if index < descending.count - 1 {
+        descendingResult += " "
+    }
+}
+print(descendingResult)
